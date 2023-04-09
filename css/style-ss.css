@@ -1,0 +1,2670 @@
+.fs-loading{position:fixed;left:0;top:0;width:100vw;height:100vh;background-color:#fff;z-index:100}
+.sc-offer-view-header{visibility:hidden!important;min-height:10px!important}
+@charset "utf-8";
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video{
+	margin:0;
+	padding:0;
+	border:0;
+	font-size:100%;
+	font-family:inherit;
+	vertical-align:baseline;
+}
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section{
+	display:block;
+}
+ol, ul{
+	list-style:none;
+}
+blockquote, q{
+	quotes:none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after{
+	content:'';
+	content:none;
+}
+h1, h2, h3, h4, h5, h6 {
+	line-height:1.2;
+	font-size:100%;
+}
+p {
+	line-height:1.4;
+	font-size:100%;
+}
+img{
+	border:none;
+	outline:none;
+}
+a{
+	text-decoration:none;
+	color:#000;
+}
+button, input, textarea{
+	padding:0;
+	margin:0;
+	border:none;
+	outline:none;
+	background:none;
+	-webkit-appearance:none;
+	font-family:inherit;
+	-webkit-transition:all 0.3s ease-in-out;
+	transition:all 0.3s ease-in-out;
+}
+html, body{
+    font-family:"SamsungOne", arial;
+    -webkit-text-size-adjust:none;
+	-webkit-font-smoothing:antialiased;
+	-webkit-tap-highlight-color:transparent;
+	-webkit-user-select:none;
+	user-select:none;
+}
+
+*{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;-webkit-font-smoothing:antialiased}
+*, *:before,*:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+
+.fs-no-scroll {
+	overflow:hidden;
+}
+.fs-has-layout::after {
+	content:'';
+	position:relative;
+	display:block;
+	width:100%;
+	height:0;
+	clear:both;
+}
+.fs-no-display{
+    display:none !important;
+
+}
+
+/*FONTS*/
+@font-face {
+	font-family:'SamsungOne';
+	src:url(https://cdn.samsung.com/etc/designs/smg/global/fonts/SamsungOne-400.woff2);
+	src:url(https://cdn.samsung.com/etc/designs/smg/global/fonts/SamsungOne-400.woff2?#iefix) format("embedded-opentype"), url(https://cdn.samsung.com/etc/designs/smg/global/fonts/SamsungOne-400.woff2) format("woff2"), url(https://cdn.samsung.com/etc/designs/smg/global/fonts/SamsungOne-400.woff) format("woff"), url(https://cdn.samsung.com/etc/designs/smg/global/fonts/SamsungOne-400.ttf) format("truetype");
+	font-weight:normal;
+	font-style:normal;
+}
+@font-face {
+	font-family:'SamsungOne';
+	src:url(https://cdn.samsung.com/etc/designs/smg/global/fonts/SamsungOne-700.eot);
+	src:url(https://cdn.samsung.com/etc/designs/smg/global/fonts/SamsungOne-700.eot?#iefix) format("embedded-opentype"), url(https://cdn.samsung.com/etc/designs/smg/global/fonts/SamsungOne-700.woff2) format("woff2"), url(https://cdn.samsung.com/etc/designs/smg/global/fonts/SamsungOne-700.woff) format("woff"), url(https://cdn.samsung.com/etc/designs/smg/global/fonts/SamsungOne-700.ttf) format("truetype");
+	font-weight:bold;
+	font-style:normal
+}
+
+@font-face {
+	font-family:'SamsungSharpSans';
+	src:url(https://cdn.samsung.com/etc/designs/smg/global/fonts/SamsungSharpSansBd.eot);
+    src:url(https://cdn.samsung.com/etc/designs/smg/global/fonts/SamsungSharpSansBd.eot?#iefix) format("embedded-opentype"), 
+    url(https://cdn.samsung.com/etc/designs/smg/global/fonts/SamsungSharpSansBd.woff) format("woff");
+	font-weight:bold;
+    font-style:normal;
+    font-display:swap;
+}
+@font-face {
+    font-family:'iCielSamsungSharpSansBold';
+	src:url(https://cdn.samsung.com/etc/designs/smg/vn/font/SamsungSharpSans-Bold-UTF8.woff2);
+    font-weight:bold;
+    font-style:normal;
+    font-display:swap;
+}
+@font-face {
+    font-family:'iCielSamsungSharpSansMedium';
+	src:url(https://cdn.samsung.com/etc/designs/smg/vn/font/SamsungSharpSans-Bold-UTF8.woff2);
+    font-weight:normal;
+    font-style:normal;
+    font-display:swap;
+}
+
+/*LAYOUT COMMON*/
+.fs-page,
+.fs-container{
+	position:relative;
+	display:block;
+	width:100%;
+	height:auto;
+}
+
+.fs-page {
+    color:#fff;
+    line-height:1;
+    overflow:hidden;
+    -webkit-text-size-adjust:none
+}
+
+.fs-section,
+.fs-inr,
+.fs-title,
+.fs-box,
+.fs-box-inr{
+    position:relative;
+	width:100%;
+	height:auto;
+}
+.fs-section p {
+    line-height:1.4;
+}
+
+.fs-size-01{width:8.3333%}
+.fs-size-02{width:16.6666%}
+.fs-size-03{width:25%}
+.fs-size-04{width:33.3333%}
+.fs-size-05{width:41.6666%}
+.fs-size-06{width:50%}
+.fs-size-07{width:58.3333%}
+.fs-size-08{width:66.6666%}
+.fs-size-09{width:75%}
+.fs-size-10{width:83.3333%}
+.fs-size-11{width:91.6666%}
+.fs-size-12{width:100%}
+
+.fs-area-bg,
+.fs-pic,
+.fs-txt{
+	position:relative;
+	display:block
+}
+.fs-area-bg{
+	background-repeat:no-repeat;
+	background-position:center center;
+	background-size:cover;
+}
+.fs-area-bg::before {
+	content:'';
+	position:relative;
+	display:block;
+	width:100%;
+	height:auto
+}
+.fs-pic{
+    line-height:0;
+}
+.fs-pic img{
+	width:auto;
+	max-width:100%;
+}
+.fs-bg {
+	position:absolute;
+	left:0;
+	top:0;
+	right:0;
+	bottom:0;
+}
+.fs-bg div {
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	background-repeat:no-repeat;
+	background-position:center center;
+	background-size:cover;
+}
+
+.fs-pc{
+	display:block !important;
+}
+.fs-sp {
+	display:none !important;
+}
+
+.pcPic{
+	display:block;
+}
+.spPic{
+	display:none;
+}
+.pcBg{
+	display:block !important;
+}
+.spBg{
+	display:none !important;
+}
+
+.fs-page h2, .fs-page h3{
+    font-family:"iCielSamsungSharpSansBold", arial;
+    font-weight:normal;
+    font-style:normal;
+}
+.fs-page p {
+    font-family:'SamsungOne';
+    font-weight:normal;
+    font-style:normal;
+}
+
+.apps-box-thumbs .swiper-slide{
+    background-color:#fff;
+}
+.apps-slider-txt{
+    width:94%;
+}
+.apps-box-thumbs {
+    z-index:0;
+}
+/*BUTTON*/
+.fs-buts{
+	position:relative;
+	display:block;
+}
+.fs-but {
+    position:relative;
+    display:inline-block;
+    color:#4e230b;
+    cursor:pointer;
+}
+
+.fs-but::before, .fs-but::after{
+    content:'';
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    -webkit-border-radius:50px;
+    border-radius:50px;
+}
+
+
+
+/*Slider*/
+.swiper-container {
+    margin:0 auto;
+    position:relative;
+    overflow:hidden;
+    list-style:none;
+    padding:0;
+    z-index:1;
+  }
+  .swiper-wrapper {
+    position:relative;
+    width:100%;
+    height:100%;
+    z-index:1;
+    display:-webkit-box;
+    display:-webkit-flex;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-transition-property:-webkit-transform;
+    transition-property:-webkit-transform;
+    -o-transition-property:transform;
+    transition-property:transform;
+    transition-property:transform, -webkit-transform;
+    -webkit-box-sizing:content-box;
+    box-sizing:content-box;
+  }
+  .swiper-container-android .swiper-slide,
+  .swiper-wrapper {
+    -webkit-transform:translate3d(0px, 0, 0);
+    transform:translate3d(0px, 0, 0);
+  }
+  .swiper-slide {
+	-webkit-flex-shrink:0;
+	-ms-flex-negative:0;
+	flex-shrink:0;
+	width:100%;
+	height:100%;
+	position:relative;
+	-webkit-transition-property:-webkit-transform;
+	transition-property:-webkit-transform;
+	-o-transition-property:transform;
+	transition-property:transform;
+	transition-property:transform, -webkit-transform;
+	/* background-color:#fff; */
+  }
+  .swiper-button-prev,.swiper-button-next {
+	position:absolute;
+	top:50%;
+	width:1.04125vw;
+	height:44px;
+	margin-top:-22px;
+	z-index:10;
+	cursor:pointer;
+	background-size:27px 44px;
+	background-position:center;
+	background-repeat:no-repeat;
+}
+.is-slider .swiper-button-prev,
+.is-slider .swiper-button-next {
+	height:auto;
+}
+.is-slider .swiper-button-prev::before,
+.is-slider .swiper-button-next::before {
+	content:'';
+	position:relative;
+	display:block;
+	width:100%;
+	height:auto;
+	padding-top:190%;
+}
+.swiper-button-prev,
+.swiper-container-rtl .swiper-button-next {
+	background-image:url(https://images.samsung.com/is/image/samsung/p5/vn/offer/dac-quyen-qled-8k/prev.png);
+	left:20px;
+	right:auto;
+	background-size:contain;
+}
+.swiper-button-next,
+.swiper-container-rtl .swiper-button-prev {
+	background-image:url(https://images.samsung.com/is/image/samsung/p5/vn/offer/dac-quyen-qled-8k/next.png);
+	right:20px;
+	left:auto;
+	background-size:contain;
+}
+.swiper-pagination {
+    position:absolute;
+    text-align:center;
+    -webkit-transition:300ms opacity;
+    -o-transition:300ms opacity;
+    transition:300ms opacity;
+    -webkit-transform:translate3d(0, 0, 0);
+    transform:translate3d(0, 0, 0);
+    z-index:10;
+  }
+  .swiper-pagination-bullet {
+    width:1.3vw;
+    height:1.3vw;
+    margin:0 1vw;
+    display:inline-block;
+    -webkit-border-radius:50%;
+    border-radius:50%;
+    background:#b3b3b3;
+    opacity:1;
+  }
+  .swiper-pagination-clickable .swiper-pagination-bullet {
+    cursor:pointer;
+  }
+  .swiper-pagination-bullet-active {
+    opacity:1;
+    background:#fff;
+    -webkit-transform:scale(1.5);
+    transform:scale(1.5);
+  }
+  .swiper-container-fade .swiper-slide {
+    pointer-events:none;
+    -webkit-transition-property:opacity;
+    -o-transition-property:opacity;
+    transition-property:opacity;
+  }
+  .swiper-container-fade .swiper-slide .swiper-slide {
+    pointer-events:none;
+  }
+  .swiper-container-fade .swiper-slide-active,
+  .swiper-container-fade .swiper-slide-active .swiper-slide-active {
+    pointer-events:auto;
+  }
+
+.fs-navigation{
+    display:none
+}
+.fs-but::before {
+    z-index:0;
+    background:-webkit-gradient(linear, left top, right top, color-stop(0%, rgba(238,214,176,1)), color-stop(54%, rgba(190,161,115,1)), color-stop(100%, rgba(190,161,115,1))); /* safari4+,chrome */
+    background:-webkit-linear-gradient(338deg, rgba(238,214,176,1) 0%, rgba(190,161,115,1) 54%, rgba(190,161,115,1) 100%);
+    background:linear-gradient(112deg, rgba(238,214,176,1) 0%, rgba(190,161,115,1) 54%, rgba(190,161,115,1) 100%);
+}
+
+.apps-slider-txt .slide-inr {
+    opacity:0;
+    -webkit-transition:opacity 0.3s ease-in-out;
+    transition:opacity 0.3s ease-in-out;
+}
+.apps-slider-txt .swiper-slide-active .slide-inr{
+    opacity:1;
+}
+
+
+.fs-but{
+    text-align:center;
+}
+.fs-but span{
+    position:relative;
+    display:block;
+    font-family:"iCielSamsungSharpSansBold", arial;
+    font-weight:normal;
+    font-style:normal;
+    color:#534741;
+    width:100%;
+    height:100%;
+    line-height:inherit;
+    z-index:2;
+    text-transform:uppercase;
+}
+.fs-but span::before, .fs-but span::after{
+    content:'';
+    position:absolute;
+    left:0;
+    width:100%;
+    background:url(https://images.samsung.com/is/image/samsung/p5/vn/offer/dac-quyen-qled-8k/offer/light-but.png) no-repeat center center;
+    background-size:contain;
+}
+.fs-link{
+    position:relative;
+    display:inline-block;
+    vertical-align:middle;
+    font-family:'SamsungOne';
+    font-weight:700;
+    font-style:normal;
+    color:#efd7b0;
+    border-bottom:2px solid #efd7b0;
+    text-transform:uppercase;
+}
+
+.fs-banner-pic{
+    position:relative;
+    display:block;
+    width:100%;
+    height:auto;
+    line-height:0;
+}
+.fs-banner-pic img{
+    width:100%;
+    height:auto;
+}
+.fs-offer .fs-title {
+    position:absolute;
+    left:0;
+    top:4.13333vw;
+    width:100%;
+    color:#fff;
+    font-size:8vw;
+    line-height:1;
+    text-transform:uppercase;
+    text-align:center;
+}
+.fs-offer .fs-title h2{
+    font-size:100%;
+    line-height:1.2;
+}
+.fs-offer .fs-title span, .fs-offer .fs-title p {
+    font-size:60%;
+    line-height:1.7;
+    font-family:"iCielSamsungSharpSansBold", arial;
+    font-weight:normal;
+    font-style:normal;
+}
+.fs-offer .fs-title p {
+    text-transform:none;
+    color:#fff;
+}
+.early-order {
+    position:absolute;
+    width:100%;
+    height:auto;
+    color:#fff;
+    text-align:center;
+}
+.early-order .fs-box{
+    display:inline-block;
+    vertical-align:top;
+    height:auto;
+}
+.early-order .fs-pic img{
+    width:auto;
+    max-width:100%;
+    margin:0 auto;
+}
+.fs-offer .fs-buts{
+    position:absolute;
+    left:0;
+    width:100%;
+    padding:0 6%;
+}
+.fs-features{
+    background-color:#000;
+}
+.fs-features .fs-title{
+    text-align:center;
+}
+.fs-features .fs-title h2{
+    color:#fff;
+    text-transform:uppercase;
+}
+.fs-features .fs-txt{
+    text-align:center;
+}
+.fs-features .fs-txt h3{
+    font-family:'SamsungOne';
+    font-weight:700;
+    font-style:normal;
+    text-transform:uppercase;
+}
+.fs-features .fs-txt h3 span{
+    font-weight:400;
+    font-style:normal;
+    display:block;
+}
+.fs-features .fs-buts{
+    text-align:center;
+}
+.fs-features .swiper-pagination{
+    position:relative;
+}
+
+/* *********************************************** */
+.fs-apps {
+    padding:5.33vw 0 8.67vw;
+    margin-bottom:8vw;
+    position:relative;
+    border-bottom:1px solid #bfbfbf;
+}
+.fs-apps .fs-buts {
+    text-align:center;
+    margin-top:4vw;
+}
+.apps-box-outer{
+    margin:0 auto -8.6vw;
+    width:100%;
+}
+.apps-box{
+    position:relative;
+    display:block;
+    width:21.3vw;
+    margin:0 auto;
+}
+.apps-slider{
+    width:100%;
+}
+
+.apps-box .swiper-container{
+    overflow:visible;
+}
+
+.fs-apps .fs-box{
+    margin:0 auto;
+    overflow:hidden;
+}
+.fs-apps .fs-box .apps-box-thumbs {
+    color:#111;
+    text-align:center;
+    position:relative;
+    padding-top:16.53vw;
+    padding-bottom:6.4vw;
+    background-color:#fff;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    border-radius:10px;
+}
+.fs-apps .fs-box .apps-box-thumbs:before {
+    content:"";
+    border:2px solid #dbbd8c;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    border-radius:10px;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+}
+.fs-apps .fs-title h2 {
+    font-family:"iCielSamsungSharpSansMedium", arial;
+    font-weight:normal;
+    font-size:5.33vw;
+    text-transform:uppercase;
+    color:#111;
+    text-align:center;
+}
+.fs-apps .fs-title h2 span {
+    display:inline-block;
+}
+.apps-slider-txt .fs-txt h3{
+    font-family:"iCielSamsungSharpSansBold", arial;
+    font-size:5.33vw;
+    margin-bottom:1vw;
+}
+.apps-slider-txt .fs-txt p{
+    font-family:"SamsungOne", arial;
+    font-size:3.2vw;
+    font-weight:400;
+    margin-bottom:2vw;
+    line-height: 1.6;
+}
+.apps-slider-txt .fs-txt span{
+    font-weight:700;
+}
+.fs-apps .swiper-pagination-fraction .swiper-pagination-current {
+    font-weight:700;
+}
+.fs-apps .swiper-pagination-fraction {
+    color:#111;
+    font-size:3.73vw;
+    font-family:"SamsungOne", arial;
+    position:static;
+}
+.fs-info {
+    color:#000;
+}
+.fs-info .fs-title {
+    font-size:6.6666vw;
+    text-align:center;
+    margin-bottom:2vw;
+}
+.fs-info .fs-pic img {
+    height:34.5vw;
+    width:auto;
+    margin:0 auto;
+}
+.fs-info .swiper-pagination-bullet{
+    background-color:#7f7f7f;
+    width:11px;
+    height:11px;
+}
+.fs-info .swiper-pagination{
+    position:relative;
+    text-align:center;
+    padding:4vw 0;
+}
+.fs-info .swiper-pagination-bullet-active{
+    background-color:#050505;
+    transform:scale(1);
+    -webkit-transform:scale(1);
+}
+.pic-box {
+    padding-bottom:1vw;
+    text-align:center;
+}
+.pic-box .tabs {
+    text-align:center;
+    margin-bottom:4.67vw;
+}
+.pic-box .tabs span {
+    font-size:3.73vw;
+    border-left:1px solid #000;
+    margin-left:14px;
+    padding-left:14px;
+}
+.pic-box .tabs span:first-child {
+    border-left:none;
+    margin-left:0;
+    padding-left:0;
+}
+.pic-box .tabs span.active {
+    font-weight:700;
+}
+.tab-content {
+    display:none;
+}
+.txt-box {
+    position:relative;
+    padding-bottom:11.46vw;
+}
+.txt-box:before {
+    content:"";
+    background-color:#f2f2f2;
+    position:absolute;
+    top:3.4vw;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index:-1;
+}
+.txt-box .tabs {
+    text-align:center;
+    font-size:0;
+    margin-bottom:4vw;
+}
+.txt-box .tabs span {
+    display:inline-block;
+    border:1px solid #171819;
+    font-size:3.46vw;
+    color:#111;
+    padding:2.13vw 5.06vw;
+}
+.txt-box .tabs span.active {
+    background-color:#1428a0;
+    border-color:#1428a0;
+    color:#fff;
+}
+.txt-box .tabs span:first-child {
+    border-radius:10px 0 0 10px;
+    -webkit-border-radius:10px 0 0 10px;
+    -moz-border-radius:10px 0 0 10px;
+}
+.txt-box .tabs span:last-child {
+    border-radius:0 10px 10px 0;
+    -webkit-border-radius:0 10px 10px 0;
+    -moz-border-radius:0 10px 10px 0;
+}
+.txt-box .tab-content {
+    width:85.33%;
+    margin:0 auto;
+    text-align:center;
+}
+.txt-box .tab-content .model-number {
+    color:#797979;
+    font-size:3.46vw;
+    font-weight:800;
+    margin-bottom:1vw;
+}
+.txt-box .tab-content h3 {
+    font-size:4.53vw;
+    font-family:"iCielSamsungSharpSansBold", arial;
+    color:#000;
+    margin-bottom:4vw;
+}
+.txt-box .tab-content .fs-txt ul {
+    font-size:3.46vw;
+    color:#000;
+    margin-bottom:11.7vw;
+}
+.txt-box .tab-content .fs-txt ul li:before {
+    content:"";
+    display:inline-block;
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background-color:#000;
+    margin-right:7px;
+}
+.txt-box .size {
+    margin-top:5.86vw;
+    margin-bottom:5.86vw;
+}
+.txt-box .size span {
+    display:inline-block;
+    vertical-align:middle;
+    font-size:3.18vw;
+    font-weight:800;
+    text-transform:uppercase;
+}
+.txt-box .size ul {
+    display:inline-block;
+}
+.txt-box .size ul li {
+    color:#000;
+    font-size:3.18vw;
+    font-weight:800;
+    display:inline-block;
+    padding:2.4vw 3.2vw;
+    margin:0 1.73vw;
+    border:1px solid #000;
+    border-radius:10px;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    transition:all .5s;
+    -moz-transition:all .5s;
+    -webkit-transition:all .5s;
+}
+.txt-box .size ul li.active, .txt-box .size ul li:hover {
+    background-color:#1428a0;
+    border-color:#1428a0;
+    color:#fff;
+}
+.tab-content.active {
+    display:block;
+}
+.fs-info .fs-buts {
+    text-align:center;
+}
+.fs-info .fs-buts .fs-but span{
+    color:#41290b;
+}
+    .fs-info .fs-buts .fs-but {
+    border:.4vw solid #171717;
+    border-radius:50px;
+    -moz-border-radius:50px;
+    -webkit-border-radius:50px;
+}
+/* *********************************************** */
+.fs-readmore {
+    font-size:2.67vw;
+    font-weight:800;
+    color:#000;
+    text-transform:uppercase;
+    display:inline-block
+}
+.fs-readmore:after {
+    content:"";
+    display:block;
+    width:100%;
+    height:.4vw;
+    background-color:#000;
+    margin-top:1.86vw;
+}
+.fs-intro {
+    text-align:center;
+    color:#000;
+    padding-bottom:6.4vw;
+    border-top:1px solid #eaeaea;
+    border-bottom:1px solid #eaeaea;
+}
+.fs-intro .fs-box {
+    width:85.33%;
+    margin:0 auto 6.4vw;
+}
+.fs-intro .fs-pic {
+    margin-bottom:7.2vw;
+}
+.fs-intro .fs-title h2 {
+    font-size:4.53vw;
+    font-family:"iCielSamsungSharpSansBold", arial;
+    color:#000;
+    margin-bottom:1.6vw;
+}
+.fs-intro .fs-des {
+    font-size:3.46vw;
+    margin-bottom:6.4vw;
+}
+.fs-info .fs-buts .fs-but:before {
+    display:none
+}
+
+.fs-agency-items{
+    font-size:0;
+    width:100%;
+}
+.fs-agency-items ul li{
+    display:inline-block;
+    height:auto;
+    padding:0;
+}
+.fs-agencies .fs-title{
+    color:#000;
+    text-align:center;
+}
+
+/*IPAD*/
+@media screen and (max-width:1100px) {
+
+	/*LAYOUT COMMON*/
+	.fs-pc {
+		display:none !important;
+	}
+	.fs-sp {
+		display:block !important;
+    }
+	.pcPic{
+		display:none;
+	}
+	.spPic{
+		display:block;
+	}
+	.pcBg{
+		display:none !important;
+	}
+	.spBg{
+		display:block !important;
+	}
+
+
+    .fs-but{
+        width:48.8vw;
+        height:10vw;
+        line-height:10vw;
+    }
+    .fs-but span{
+        font-size:3vw;
+    }
+    .fs-but span::before, .fs-but span::after{
+        height:1.6vw;
+    }
+    .fs-but span::before{
+        top:-0.7vw;
+    }
+    .fs-but span::after{
+        bottom:-0.7vw;
+    }
+    .fs-link{
+        font-size:3vw;
+        margin-left:8.26vw;
+    }
+
+    .early-order {
+        left:0;
+        bottom:43vw;
+    }
+    .early-order .fs-box{
+        width:auto;
+    }
+    .early-order .fs-pic{
+        width:22vw;
+        margin-bottom:1.2vw;
+    }
+    .early-order .fs-pic img{
+        height:13.4666vw;
+    }
+    .early-order h3{
+        font-size:2vw;
+        line-height:2.93vw;
+    }
+
+    .fs-offer .fs-buts{
+        bottom:6.1111vw;
+    }
+
+    .fs-features{
+        margin-top:-1px;
+        padding:4.2666vw 0 47.4vw 0;
+    }
+    .fs-features .fs-title{
+        margin-bottom:2.5vw;
+    }
+    .fs-features .fs-title h2{
+        font-size:5.3333vw;
+        line-height:8.4vw;
+    }
+    .features-slider{
+        width:100%;
+        margin-bottom:6.2vw;
+    }
+    .fs-features .swiper-slide {
+        background-color:#000;
+    }
+    .fs-features .swiper-slide .slide-inr{
+        opacity:0;
+    }
+    .fs-features .swiper-slide.swiper-slide-active .slide-inr{
+        opacity:1;
+    }
+    .fs-features .fs-txt{
+        padding:5vw 2%;
+    }
+    .fs-features .slide-inr{
+        display:block;
+        width:100%;
+    }
+    .fs-features .fs-txt h3{
+        font-size:4.4vw;
+        margin-bottom:3.7vw;
+    }
+    .fs-features .fs-txt h3 span{
+        font-size:76%;
+        margin-bottom:2.6vw;
+        line-height:1.4;
+    }
+    .fs-features .fs-txt p{
+        font-size:3vw;
+        line-height:4.9333vw;
+        margin-bottom:4.8vw;
+        color:#fff;
+    }
+    .fs-features .swiper-pagination{
+        padding:1vw 0;
+    }
+
+
+
+    .fs-products{
+        padding:0 3%;
+        text-align:center;
+        margin-top:-38vw;
+        color:#000;
+    }
+    .fs-products .fs-title{
+        font-size:5.3333vw;
+        margin-bottom:5.333vw;
+        text-transform:uppercase;
+        color:#fff;
+    }
+    .fs-products .fs-title h2{
+        font-size:100%;
+        line-height:8.5vw;
+    }
+    .fs-products .fs-title p{
+        font-size:55%
+    }
+    .fs-products .fs-title p strong{
+        font-weight:700;
+    }
+    .fs-donate-box{
+        position:relative;
+        display:block;
+        width:100%;
+        height:auto;
+        border:2px solid #ddbc88;
+        margin-bottom:18vw;
+        padding:3.4666vw 0 10vw 0;
+        background:#fff;
+    }
+    .fs-products-nav{
+        position:relative;
+        display:inline-block;
+        width:auto;
+        height:auto;
+        font-size:0;
+        border:1px solid #8c6239;
+        -webkit-border-radius:5px;
+        border-radius:5px;
+        overflow:hidden;
+        margin-bottom:3.6vw;
+    }
+    .fs-products-nav .fs-box{
+        display:inline-block;
+        vertical-align:top;
+        width:18.6666vw;
+        height:7.46666vw;
+        line-height:7.46666vw;
+        border-right:2px solid #c9b5a2;
+    }
+    .fs-products-nav .fs-box:last-child{
+        border:none;
+    }
+    .fs-products-nav .fs-box::before{
+        content:'';
+        position:absolute;
+        left:0;
+        top:0;
+        width:100%;
+        height:100%;
+        background:-webkit-gradient(linear, left top, right top, color-stop(0%, rgba(238,214,176,1)), color-stop(54%, rgba(190,161,115,1)), color-stop(100%, rgba(190,161,115,1)));
+        background:-webkit-linear-gradient(338deg, rgba(238,214,176,1) 0%, rgba(190,161,115,1) 54%, rgba(190,161,115,1) 100%);
+        background:linear-gradient(112deg, rgba(238,214,176,1) 0%, rgba(190,161,115,1) 54%, rgba(190,161,115,1) 100%);
+        z-index:0;
+        opacity:0;
+    }
+    .fs-products-nav .fs-box.active::before{
+        opacity:1;
+    }
+    .fs-products-nav .fs-box h2{
+        position:relative;
+        top:0.4vw;
+        font-size:2.26666vw;
+        color:#a67c52;
+        line-height:2.8vw;
+    }
+    .fs-products-nav .fs-box.active h2{
+        color:#534741;
+    }
+    .fs-products-nav .fs-txt{
+        position:relative;
+        display:inline-block;
+        vertical-align:middle;
+        width:auto;
+        height:auto;
+        z-index:2;
+    }
+
+    .fs-donate-box .fs-pic{
+        width:41.2vw;
+        margin:0 auto 3.06vw auto;
+    }
+    .fs-donate-box .fs-pic img{
+        width:100%;
+    }
+    .fs-donate-box .fs-txt h3{
+        font-family:'SamsungOne';
+        font-weight:700;
+        font-style:normal;
+        color:#534741;
+        font-size:2.6666vw;
+        margin-bottom:3.2vw;
+    }
+
+    .fs-product-overlay{
+        position:relative;
+        display:block;
+        width:100%;
+        height:auto;
+        overflow:hidden;
+    }
+    .fs-product-items{
+        position:relative;
+        display:block;
+        width:100%;
+        height:auto;
+    }
+    .fs-product-item {
+        position:relative;
+        padding-top:2.084vw;
+        width:100%;
+        height:auto;
+    }
+    .fs-donate-slider{
+        width:100%;
+    }
+    .fs-donate-follow{
+        position:relative;
+        display:block;
+        width:100%;
+        height:auto;
+        padding:3.2vw 0 0 0;
+        border-top:2px solid #ddbc88;
+    }
+    .fs-donate-box .swiper-button-prev, .fs-donate-box  .swiper-button-next{
+        top:10vw;
+        margin:0;
+        width:2.6666vw;
+        height:auto;
+    }
+    .fs-donate-box  .swiper-button-prev{
+        left:12.26666vw;
+    }
+    .fs-donate-box  .swiper-button-next{
+        right:12.26666vw;
+    }
+    .fs-donate-box .swiper-button-prev::before, .fs-donate-box  .swiper-button-next::before{
+        content:'';
+        position:relative;
+        display:block;
+        width:100%;
+        height:auto;
+        padding-top:190%;
+    }
+    .fs-donate-follow li{
+        position:relative;
+        display:inline-block;
+        vertical-align:bottom;
+        text-align:center;
+        margin:0 3vw 3vw 3vw;
+    }
+
+    .spr-02, .spr-03{
+        padding:10vw 0;
+    }
+    .fs-donate-follow .spr-03 li{
+        margin:0  1vw 3vw 1vw;
+    }
+    .fs-donate-follow li h3{
+        font-size:2.13333vw;
+        line-height:1.4;
+    }
+    .is-galaxy, .is-soundbar, .is-app, .is-8k{
+        width:27vw;
+    }
+    .fs-donate-follow .fs-small-pic{
+        margin-bottom:1.8VW;
+    }
+    .fs-donate-follow li img{
+        max-width:100%;
+        margin:0 auto;
+    }
+    .is-galaxy img{
+        height:15.2vw;
+        width:auto;
+    }
+    .is-soundbar  img{
+        height:14vw;
+        width:auto;
+    }
+    .is-app  img{
+        height:12.4vw;
+        width:auto;
+    }
+    .is-8k  img{
+        height:10vw;
+        width:auto;
+    }
+
+    .is-soundbar.type-01 .fs-small-pic{
+        padding-top:0.8vw;
+    }
+    .is-8k.type-01 .fs-small-pic{
+        padding-top:1.8vw;
+    }
+    .is-app.type-01 .fs-small-pic{
+        padding-top:2.45vw;
+    }
+
+    .is-8k.type-02 .fs-small-pic{
+        padding-top:4.8vw;
+    }
+    .is-app.type-02 .fs-small-pic{
+        padding-top:2.45vw;
+    }
+
+    .donate-brief{
+        padding:1vw 5.3333vw 0 5.3333vw;
+        text-align:left
+    }
+    .donate-brief p{
+        font-size:2.2vw;
+        margin-bottom:1vw;
+    }
+    .fs-donate-box .fs-buts {
+        width:100%;
+        text-align:center;
+        position:absolute;
+        left:0;
+        bottom:0;
+    }
+    .fs-donate-box .fs-but{
+        top:5vw;
+    }
+    .fs-donate-box .fs-product-info .fs-but{
+        top:auto;
+        width:36vw;
+        height:8vw;
+        line-height:9vw;
+        margin-bottom:4vw;
+    }
+    
+    .fs-promotions{
+        padding:0 3% 11vw 3%;
+        color:#000;
+        text-align:center;
+    }
+    .fs-promotions .fs-title{
+        font-size:6.6666vw;
+        margin-bottom:3vw;
+        text-transform:uppercase;
+    }
+    .fs-promotions .fs-title h2{
+        font-size:100%;
+        line-height:8.5vw;
+    }
+    .fs-promotions .fs-title p{
+        font-size:48%
+    }
+    .fs-promotions .fs-title p strong{
+        font-weight:700;
+    }
+    .fs-promotions .fs-pic{
+        margin-bottom:6.4vw;
+    }
+    .fs-promotions .fs-pic img {
+        width:80%;
+        margin:0 auto;
+    }
+    .fs-promotions .fs-txt h3{
+        font-size:5.3333vw;
+        margin-bottom:4vw;
+    }
+    .fs-promotions .slide-inr{
+        padding-bottom:5vw;
+    }
+    .fs-promotions .fs-txt{
+        margin-top:-5vw;
+    }
+
+    .fs-promotions .swiper-button-prev, .fs-promotions  .swiper-button-next{
+        top:36vw;
+        margin:0;
+        width:2.6666vw;
+        height:auto;
+    }
+    .fs-promotions  .swiper-button-prev{
+        left:2vw;
+    }
+    .fs-promotions  .swiper-button-next{
+        right:2vw;
+    }
+    .fs-promotions .swiper-button-prev::before, .fs-promotions .swiper-button-next::before{
+        content:'';
+        position:relative;
+        display:block;
+        width:100%;
+        height:auto;
+        padding-top:190%;
+    }
+    .fs-promotions .swiper-pagination-bullet{
+        background-color:#595959;
+    }
+    .fs-promotions .swiper-pagination{
+        position:relative;
+        text-align:center;
+        padding:1.2vw 0;
+    }
+    .fs-promotions .swiper-pagination-bullet-active{
+        background-color:#000;
+    }
+
+    .fs-apps:before {
+        content:"";
+        background-color:#f5f5f5;
+        position:absolute;
+        top:0;
+        left:0;
+        right:0;
+        height:53%;
+    }
+    .fs-apps .fs-box{
+        width:89.3vw;
+    }
+    .fs-apps .fs-title{
+        margin-bottom:3.26vw;
+    }
+    .apps-slider .swiper-slide .fs-pic {
+        margin:0 2.1vw;
+    }
+    .apps-box .swiper-slide.scale-075.scale-right {
+        transform:translateX(-.25vw) scale(.75);
+    }
+    .apps-box .swiper-slide.scale-075.scale-left {
+        transform:translateX(.25vw) scale(.75);
+    }
+    .apps-box .swiper-slide.scale-054.scale-right{
+        transform:translateX(-2vw) scale(.57);
+    }
+    .apps-box .swiper-slide.scale-054.scale-left{
+        transform:translateX(2vw) scale(.57);
+    }
+    .apps-box .swiper-slide.scale-033.scale-right{
+        transform:translateX(-7.54vw) scale(.33);
+    }
+    .apps-box .swiper-slide.scale-033.scale-left{
+        transform:translateX(7.54vw) scale(.33);
+    }
+    .apps-box .swiper-slide.scale-012.scale-right{
+        transform:translateX(-12.54vw) scale(.12);
+    }
+    .apps-box .swiper-slide.scale-012.scale-left{
+        transform:translateX(12.54vw) scale(.12);
+    }
+    .apps-box .swiper-slide.swiper-slide-active .fs-pic {
+        box-shadow:0px 50px 60px rgba(0, 0, 0, .2);
+        border-radius:27px; 
+    }
+    .apps-box-outer .swiper-button-prev, .apps-box-outer  .swiper-button-next{
+        top:26vw;
+        margin:0;
+        width:2.6666vw;
+        height:auto;
+    }
+    .apps-box-outer .swiper-button-prev{
+        left:3vw;
+    }
+    .apps-box-outer .swiper-button-next{
+        right:3vw;
+    }
+    .apps-box-outer .swiper-button-prev::before, .apps-box-outer .swiper-button-next::before{
+        content:'';
+        position:relative;
+        display:block;
+        width:100%;
+        height:auto;
+        padding-top:190%;
+    }
+
+    .fs-agencies ul{
+        position:relative;
+        left:-0.5%;
+    }
+    .fs-agencies .fs-inr{
+        padding:10vw 5%;
+    }
+    .fs-agencies .fs-title{
+        font-size:6.7vw;
+        padding:0;
+        text-align:center;
+        margin-bottom:3.2vw;
+    }
+    .fs-agencies .fs-title h2{
+        font-size:6vw;
+    }
+    .fs-agency-items{
+        position:relative;
+        left:1.5%;
+    }
+    .fs-agency-items ul li{
+        width:45%;
+        margin:2%;
+    }
+    .fs-agency-items li a{
+        display:block;
+    }
+    .fs-agency-items li img {
+        width:100%;
+    }
+
+
+
+    /*tv*/
+    .fs-tv .fs-inr{
+        width:100%
+    }
+    .tv-items{
+        position:relative;
+        display:block;
+        width:100%;
+        height:auto;
+    }
+    .tv-item{
+        position:relative;
+        display:block;
+        width:100%;
+        height:auto;
+        background-color:#fff;
+    }
+    .tv-item:not(.active){
+        position: absolute;
+        left:0;
+        top:0;
+        visibility: hidden;
+    }
+    .tv-pics,
+    .tv-sizes{
+        display: block;
+    }
+
+    .tab-size-content{
+        padding:6.6vw 6.6vw 7.4666vw 6.6vw;
+        background-color:#f2f2f2;
+    }
+    .tab-size-nav{
+        position: relative;
+        text-align:center;
+        font-size:0;
+        margin-bottom:2.08333vw;
+        margin-top:-11vw;
+        z-index: 4;
+    }
+    .tab-size-nav span{
+        display:inline-block;
+        border:1px solid #171819;
+        font-size:3.46vw;
+        padding:2.13vw 5.06vw;
+        color:#111;
+        background-color:#f2f2f2;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+    }
+    .tab-size-nav span:first-child{
+        border-radius:10px 0 0 10px;
+        -webkit-border-radius:10px 0 0 10px;
+    }
+    .tab-size-nav span:last-child{
+        border-radius:0 10px 10px 0;
+        -webkit-border-radius:0 10px 10px 0;
+        border-left:none;
+    }
+    .tab-size-nav span.active, .tab-size-nav span:not(.active):hover{
+        background-color:#1428a0;
+        border-color:#1428a0;
+        color:#fff;
+    }
+    .tab-size{
+        text-align: center;
+    }
+    .tab-size h3{
+        font-size:4.53333vw;
+        font-weight:700;
+        color:#000;
+        margin-bottom:4vw;
+    }
+    
+    .model-number{
+        color:#797979;
+        font-size:3.46vw;
+        font-weight:700;
+        margin-bottom:2vw;
+    }
+    
+    .tab-size .fs-txt li {
+        position: relative;
+        font-size:3.46666vw;
+        color:#000;
+        font-weight:400;
+        margin-bottom:1.5vw;
+        line-height:1.2;
+    }
+    .tab-size .fs-txt li span{
+        position: relative;
+        display: inline-block;
+        padding-left:2vw
+    }
+    .tab-size .fs-txt li span::before{
+        content: '';
+        position: absolute;
+        left:0;
+        top:1.2vw;
+        display: block;
+        width:9px;
+        height:9px;
+        background-color:#000;
+        -webkit-border-radius:50%;
+        border-radius:50%;
+    }
+    .size {
+        margin-bottom:5.7vw;
+    }
+    .size ul{
+       display:inline-block;
+    }
+    .size span{
+        display: inline-block;
+        font-family: "SamsungOne", arial;
+        text-align: center;
+        color:#000;
+        font-size:3.18vw;
+        text-transform: uppercase;
+        font-weight:700;
+    }
+    .size ul li {
+        display:inline-block;
+        font-size:3.14vw;
+        padding:2.4vw 3.2vw;
+        margin:0 1vw;
+        border:1px solid #000;
+        border-radius:10px;
+        -webkit-border-radius:10px;
+        color:#000;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+        font-weight:700;
+    }
+    .size ul li.active, .size ul li:not(.active):hover{
+        background-color: #1428a0;
+        color:#fff;
+        border:1px solid #1428a0;
+    }
+    .tab-size-content .fs-buts{
+        text-align:center;
+    }
+    .tab-size-content .fs-but{
+        border:.4vw solid #171717;
+        -webkit-border-radius:50px;
+        border-radius:50px;
+    }
+    .tab-size-content .fs-but::before, .tab-size-content .fs-but::after{
+        display: none;
+    }
+    .tab-size-content .fs-but span::before, .tab-size-content .fs-but span::after{
+        display: none;
+    }
+
+    .tv-thumb{
+        position: relative;
+        display: block;
+        float: left;
+        width: 14%;
+    }
+    .tv-thumb li{
+        display: block;
+        width:6.8vw;
+        height:6.8vw;
+        line-height:6.8vw;
+        border:1px solid #b7b7b7;
+        -webkit-border-radius:10px;
+        border-radius:10px;
+        margin-bottom:0.625vw;
+        text-align: center;
+        cursor: pointer;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+    }
+    .tv-thumb li.active{
+        border:1px solid #111111;
+    }
+    .tv-thumb li img:not(.active){
+        display: none;
+    }
+    .tv-thumb li .fs-pic{
+        display:inline-block;
+        vertical-align: middle;
+        width: auto;
+        height:auto;
+    }
+    .tv-thumb li img.active{
+        width: auto;
+        height: auto;
+        max-width: 80%;
+        max-height:80%;
+    }
+
+    .tv-main{
+        position: relative;
+        display: block;
+        width:60%;
+        margin:0 auto;
+        padding-bottom:12vw;
+    }
+    .tv-main-slider{
+        width:100%;
+    }
+    .tv-main-slider .swiper-slide{
+        background-color:#fff;
+    }
+    .tv-main .fs-pic img:not(.active){
+        position: absolute;
+        left:0;
+        top:0;
+        opacity:0;
+    }
+    .tab-size, .by-tabsize{
+        display: none;
+    }
+    .tab-size.active, .by-tabsize.active{
+        display: block;
+    }
+
+    .qled-2020-box,  .tv-main-2020{
+        position: relative;
+        display: block;
+        width:100%;
+        height:auto;
+    }
+    .qled-2020-pic{
+        width:80%;
+        margin:0 auto;
+    }
+    .qled-2020-size .tv-sizes{
+        display: block;
+        width: 100%;
+        flex: none;
+        max-width: unset;
+    }
+    .qled-2020-size .tab-size{
+        display: block;
+        background-color:#f2f2f2;
+        padding:20vw 0.972vw 2.7vw 0.972vw;
+        margin-top:-22vw;
+    }
+    .qled-2020-size .size ul li{
+        margin:0 0.2vw;
+    }
+    .tv-main-2020 .swiper-slide{
+        padding:0;
+        background-color: #fff;
+    }
+    .tv-item[data-tv="qled-2020"]{
+        background-color: #f2f2f2;
+    }
+    .fs-tv .fs-title h2{
+        font-size:6.6666vw;
+        color:#000;
+        text-transform: uppercase;
+        text-align: center;
+        margin-bottom:1.04vw;
+    }
+    .tabs {
+        width:100%;
+        text-align: center;
+        margin-bottom: 4.67vw;
+    }
+    .tabs span {
+        font-size: 3.7vw;
+        border-left: 1px solid #000;
+        padding:0 1.6vw;
+        color:#111111;
+        cursor: pointer;
+    }
+    .tabs span:first-child{
+        border:none;
+    }
+    .tabs span.active{
+        font-weight:700;
+    }
+
+    .fs-tv .swiper-button-prev, .fs-tv .swiper-button-next {
+        top: 24vw;
+        margin: 0;
+        width: 2.6666vw;
+        height: auto;
+    }
+    .fs-tv .swiper-button-prev{
+        left:5vw;
+    }
+    .fs-tv .swiper-button-next{
+        right:5vw;
+    }
+    .fs-tv .swiper-button-prev::before, .fs-tv .swiper-button-next::before{
+        content: '';
+        position: relative;
+        display: block;
+        width: 100%;
+        height: auto;
+        padding-top: 190%;
+    }   
+    .tab-size .fs-txt ul{
+        display: inline-block;
+        width: auto;
+        max-width:94%;
+        margin-bottom:11.7vw;
+        text-align:left;
+    }
+    .qled-2020-size .fs-txt ul{
+        max-width:80%;
+    }
+    .tv-main .swiper-pagination{
+        width:100%;
+    }
+    .tv-main .swiper-pagination-bullet {
+        background-color: #7f7f7f;
+        width: 11px;
+        height: 11px;
+    }
+    .tv-main .swiper-pagination-bullet-active {
+        background-color: #050505;
+        transform: scale(1);
+        -webkit-transform: scale(1);
+    }
+
+
+}
+
+@media screen and (max-width:520px) {
+    .swiper-pagination-bullet{
+        width:8px;
+        height:8px;
+        margin:0 5px;
+    }
+
+    .tv-main .swiper-pagination-bullet {
+        width: 8px;
+        height: 8px;
+    }
+    .tab-size .fs-txt li span::before{
+        width:4px;
+        height:4px;
+    }
+    .tab-size .fs-txt li span{
+        padding-left:2.2vw;
+    }
+
+}
+@media (min-width:1101px){
+    .swiper-pagination-bullet {
+        width:.55vw;
+        height:.55vw;
+        margin:0 .8vw;
+    }   
+    .fs-but {
+        width:16.25vw;
+        height:3.4vw;
+        line-height:3.4vw;
+    }
+    .fs-but, .fs-readmore{
+        -webkit-transition:opacity 0.3s ease-in-out;
+        transition:opacity 0.3s ease-in-out;
+    }
+    .fs-but:hover, .fs-readmore:hover{
+        opacity:0.5;
+    }
+    .fs-but span{
+        font-size:1vw;
+    }
+    .fs-but span::before, .fs-but span::after {
+        height:.7vw;
+    }
+    .fs-but span::before {
+        top:-.35vw;
+    }
+    .fs-but span::after {
+        bottom:-.35vw;
+    }
+    .fs-link{
+        font-size:.89vw;
+        margin-left:2.7vw;
+    }
+    .fs-offer .fs-title {
+        font-size:2.93vw;
+        top:1.53vw;
+    }
+    .fs-offer .fs-title span {
+        line-height:1;
+    }
+    .fs-offer .fs-title h2{ 
+        display:inline;
+    }
+    .early-order {
+        width:42vw;
+        bottom:7.5vw;
+        left:50%;
+        transform:translateX(-50%);
+        font-size:0;
+    }
+    .early-order .fs-box{
+        width:25%;
+    }
+    .early-order .fs-pic {
+        width:auto;
+        margin-bottom:0.5vw;
+    }
+    .early-order .fs-pic img{
+        height:5.35vw;
+    }
+    .early-order h3{
+        font-size:.9vw;
+        line-height:1.54;
+    }
+    .fs-offer .fs-buts {
+        position: absolute;
+        left:auto;
+        right:7.8%;
+        bottom:4.125vw;
+        width:auto;
+        padding:0;
+        text-align:center;
+    }
+    .fs-features .fs-title {
+        position:absolute;
+        z-index:2;
+        top:1.5vw;
+    }
+    .fs-features .fs-title h2 {
+        font-size:2.08vw;
+        line-height:3.125vw;
+    }
+    .features-slider{
+        width:100%;
+    }
+    .fs-features .swiper-slide{
+        background-color:#000;
+    }
+    .fs-features .fs-txt {
+        position:absolute;
+        bottom:5vw;
+        width:46vw;
+        left:50%;
+        -webkit-transform:translateX(-50%);
+        transform:translateX(-50%);
+    }
+    .fs-features .fs-txt h3 {
+        font-size:1.67vw;
+        line-height:1.805vw;
+        margin-bottom:1.04vw;
+    }
+    .fs-features .fs-txt h3 span {
+        font-size:75%;
+        text-transform:capitalize;
+        margin-bottom:0.5555vw;
+    }
+    .fs-features .fs-txt p{
+        font-size:0.973vw;
+        line-height:1.6vw;
+        color:#fff;
+    }
+    .fs-features .fs-txt p{
+        min-height:4.8vw;
+        margin-bottom:2.7777vw;
+    }
+    .fs-features .swiper-pagination {
+        position:absolute;
+        width:100%;
+        bottom:1.38vw;
+        padding:0.2vw 0;
+    }
+    .fs-features .swiper-button-prev, .fs-features .swiper-button-next {
+        width:1.39vw;
+        height:2.64vw;
+        background-size:100%;
+    }
+    .fs-features .swiper-button-prev {
+        background-image:url(https://images.samsung.com/is/image/samsung/p5/vn/offer/dac-quyen-qled-8k/prev-wh-pc.png);
+        left:2.5vw;
+    }
+    .fs-features .swiper-button-next {
+        background-image:url(https://images.samsung.com/is/image/samsung/p5/vn/offer/dac-quyen-qled-8k/next-wh-pc.png);
+        right:2.5vw;
+    }
+    
+    .fs-products .fs-inr {
+        color:#111;
+        width:61.8vw;
+        margin:0 auto;
+        padding:3.3vw 0;
+    }
+    .fs-products .fs-title {
+        font-size:2.083vw;
+        text-transform:uppercase;
+        text-align:center;
+        margin-bottom:2.7vw;
+    }
+    .fs-products .fs-title h2 {
+        line-height:1.4;
+    }
+    .fs-products .fs-title h2 span {
+        display:inline-block;
+    }
+    .fs-products .fs-title p {
+        font-size:1.25vw;
+        text-transform:none;
+        line-height:1;
+    }
+    .fs-products .fs-product-overlay{
+        border:2px solid #e6cea8;
+    }
+    .fs-products .swiper-wrapper{
+        display:block;
+    }
+    .fs-products .fs-box-inr{
+        overflow:hidden;
+        border-bottom:1px solid #e6cea8;
+    }
+    .fs-products .fs-product-info{
+        position:relative;
+        width:32%;
+        float:left;
+        text-align:center;
+    }
+    .fs-product-info .fs-but{
+        display:inline-block;
+        width:8vw;
+        height:2.4vw;
+        line-height:2.4vw;
+        margin-bottom:1vw;
+    }
+    .fs-product-info .fs-but span{
+        padding-top:0.1vw;
+    }
+    .fs-products .swiper-slide:last-child .fs-box-inr{
+        border-bottom:none;
+    }
+    .fs-products .fs-product-info::after{
+        content:'';
+        position:absolute;
+        right:0;
+        top:0;
+        width:1px;
+        height:120%;
+        background-color:#ddbc88;
+        overflow:hidden;
+    }
+    .fs-product-info .fs-pic img{
+        width:100%;
+    }
+    .fs-product-info h3{
+        color:#534741;
+        font-size:1.1vw;
+    }
+    .fs-products .fs-donate-follow{
+        width:68%;
+        float:left;
+    }
+    .fs-products .fs-pic{
+        width:76%;
+        margin:1.8vw auto 0;
+    }
+    .fs-products .fs-txt{
+        margin:1vw 0;
+        text-align:center;
+    }
+    .fs-products .fs-donate-follow ul{
+        width:90%;
+        margin:1.4vw auto;
+        overflow:hidden;
+    }
+    .fs-products .fs-donate-follow li{
+        text-align:center;
+        float:left;
+    }
+    
+    .fs-products .fs-donate-follow li h3{
+        font-size:0.83vw;
+        line-height:1.06vw;
+        color:#111111;
+    }
+    .fs-products .fs-donate-follow li .fs-small-pic{
+        height:5.55vw;
+        line-height:5.55vw;
+        margin-bottom:0.7vw;
+    }
+    .fs-products .fs-donate-follow li .fs-small-pic img{
+        display:inline-block;
+        width:auto;
+        max-height:100%;
+        vertical-align: bottom;
+    }
+    .fs-products .is-galaxy{
+        width:16%;
+    }
+    .fs-products .is-soundbar{
+        width:30%;
+    }
+    .fs-products .is-app{
+        width:31%;
+    }
+    .fs-products .is-8k{
+        width:23%;
+    }
+    .fs-products .donate-brief{
+        width:88%;
+        font-size:0.69vw;
+        line-height:0.97vw;
+        margin:1.7vw auto 0.9vw;
+        color:#534741;
+    }
+    .fs-products .donate-brief p{
+        margin-top:0.5vw;
+    }
+    .fs-products .fs-buts {
+        text-align:center;
+        margin-top:2.1vw;
+    }
+    .fs-promotions-pc {
+        padding:1.875vw 0;
+    }
+    .fs-promotions-pc .fs-title {
+        font-size:2.083vw;
+        color:#111;
+        text-align:center;
+        margin-bottom:2.2vw;
+    }
+    .fs-promotions-pc .fs-box {
+        box-shadow:13px 7px 40px rgba(198, 156, 109, .18);
+        width:48.6vw;
+        margin:0 auto 2.08vw;
+        border:1px solid #ddbc88;
+        border-radius:10px;
+        -webkit-border-radius:10px;
+        -moz-border-radius:10px;
+        display:flex;
+    }
+    .fs-promotions-pc .fs-box .fs-box-info {
+        max-width:33.7%;
+        flex:0 0 33.7%;
+        border-right:2px solid #efd9b3;
+        padding:2.9vw;
+    }
+    .fs-promotions-pc .fs-box .fs-box-follow {
+        max-width:66.3%;
+        flex:0 0 66.3%;
+        padding:2.9vw;
+    }
+    .fs-promotions-pc .fs-box .fs-box-info .fs-pic img {
+        margin:0 auto;
+    }
+    .fs-promotions-pc .list-box li {
+        color:#534741;
+        font-size:1.39vw;
+        font-family:"iCielSamsungSharpSansBold", arial;
+        white-space:nowrap;
+        margin-bottom:.55vw;
+    }
+    .fs-promotions-pc .list-box li img {
+        display:inline-block;
+        margin-right:1.39vw;
+        vertical-align:middle;
+    }
+    .fs-promotions-pc .fs-buts {
+        text-align:center;
+    }
+    .fs-apps {
+        padding-bottom:0;
+        border-bottom:none;
+        margin-bottom:5.13vw;
+    }
+    .fs-apps .fs-title h2 {
+        font-size:2.08vw;
+    }
+    .fs-apps .fs-inr {
+        width:66.67vw;
+        margin:0 auto;
+    }
+    .fs-apps .fs-box {
+        margin-top:2vw;
+    }
+    .apps-slider .swiper-slide .fs-pic{
+        margin:0 1.042vw;
+    }
+    .apps-slider .swiper-slide .fs-pic img{
+        width:100%;
+    }
+    .apps-box .swiper-slide{
+        transition:transform .5s;
+        -moz-transition:transform .5s;
+        -webkit-transition:transform .5s;
+    }
+    .apps-box .swiper-slide.scale-075.scale-right {
+        transform:translateX(-.75vw) scale(.75);
+    }
+    .apps-box .swiper-slide.scale-075.scale-left {
+        transform:translateX(.75vw) scale(.75);
+    }
+    .apps-box .swiper-slide.scale-054.scale-right{
+        transform:translateX(-3.54vw) scale(.54);
+    }
+    .apps-box .swiper-slide.scale-054.scale-left{
+        transform:translateX(3.54vw) scale(.54);
+    }
+    .apps-box .swiper-slide.scale-033.scale-right{
+        transform:translateX(-7.54vw) scale(.33);
+    }
+    .apps-box .swiper-slide.scale-033.scale-left{
+        transform:translateX(7.54vw) scale(.33);
+    }
+    .apps-box .swiper-slide.scale-012.scale-right{
+        transform:translateX(-12.54vw) scale(.12);
+    }
+    .apps-box .swiper-slide.scale-012.scale-left{
+        transform:translateX(12.54vw) scale(.12);
+    }
+    .apps-box .swiper-slide.swiper-slide-active .fs-pic {
+        box-shadow:0px 50px 60px rgba(0, 0, 0, .2);
+        border-radius:27px; 
+    }
+    .apps-box .swiper-slide:not(.swiper-slide-active) .fs-pic:before{
+        content:"";
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        background-color:#000;
+        opacity:.2;
+        border-radius:27px;
+        box-shadow:0px 50px 60px rgba(0, 0, 0, .2);
+    }
+    .apps-box {
+        width:10.4vw;
+    }
+    .apps-box-outer{
+        width:55vw;
+        overflow-x:hidden;
+        margin-bottom:-16.8125%;
+        padding-bottom:10%;
+    }
+    .apps-box-outer .swiper-button-next{
+        top:16vw;
+        right: 12vw;
+    }
+    .apps-box-outer .swiper-button-prev{
+        top:16vw;
+        left: 12vw;
+    }
+    .apps-slider-txt .fs-txt h3 {
+        font-size:2.08vw;
+    }
+    .apps-slider-txt .fs-txt p {
+        font-size:1.11vw;
+        margin-bottom:.4vw;
+    }
+    .fs-apps .fs-box .apps-box-thumbs {
+        padding:6.6vw 0 1vw;
+    }
+    .fs-apps .fs-box .apps-box-thumbs:before{
+        border:2px solid #ddbc89;
+    }
+    .fs-apps .fs-box .apps-box-thumbs .slide-inr{
+        width:48%;
+        margin:0 auto;
+    }
+    .fs-apps .fs-txt {
+        margin:0 0 2vw;
+    }
+    .fs-apps .swiper-pagination-fraction {
+        font-size:1.53vw;
+        margin-bottom:1vw;
+    }
+    .fs-apps .fs-buts {
+        margin-top:2.08vw;
+    }
+    .fs-info .fs-inr {
+        width:81.25vw;
+        margin:0 auto;
+    }
+    .fs-info .fs-box {
+        display:flex;
+    }
+    .fs-info .fs-box .pic-box {
+        max-width:61%;
+        flex:0 0 61%;
+    }
+    .fs-info .fs-box .txt-box {
+        max-width:39%;
+        flex:0 0 39%;
+    }
+    .fs-info .fs-title {
+        font-size:2.08vw;
+    }
+    .pic-box .tabs span {
+        font-size:1.54vw;
+    }
+    .txt-box .tabs span {
+        font-size:1.53vw;
+        padding:.76vw 2.08vw;
+    }
+    .txt-box .tab-content .model-number {
+        font-size:1.1vw;
+    }
+    .txt-box .tab-content h3 {
+        font-size:1.6vw;
+    }
+    .txt-box .tab-content .fs-txt ul {
+        font-size:1.1vw;
+    }
+    .txt-box .size span {
+        font-size:1.25vw;
+    }
+    .txt-box .size ul {
+        display:block;
+        margin-top:1vw;
+    }
+    .txt-box .size ul li {
+        font-size:1vw;
+        padding:.5vw .9vw;
+        border-radius:3px;
+        -moz-border-radius:3px;
+        -webkit-border-radius:3px;
+    }
+    .txt-box .tab-content .fs-txt {
+        text-align:left;
+    }
+    .fs-info .fs-buts .fs-but {
+        border-width:3px;
+    }
+    .txt-box {
+        padding-bottom:2.77vw;
+    }
+    .txt-box .size {
+        margin-bottom:2.08vw;
+    }
+    /* *** */
+    .fs-intro {
+        text-align:left;
+        padding-bottom:0;
+    }
+    .fs-intro .fs-inr {
+        display:flex;
+        align-items:center;
+        width:81.25vw;
+        margin:0 auto;
+    }
+    .fs-intro .fs-inr .fs-pic{
+        max-width:52.82%;
+        flex:0 0 52.82%;
+        margin-bottom:0;
+    }
+    .fs-intro .fs-inr .fs-pic img{
+        width:100%;
+    }
+    .fs-intro .fs-inr .fs-box {
+        padding:0 4.16vw 0 6.94vw;
+        margin-bottom:0;
+    }
+    .fs-intro .fs-title h2 {
+        font-size:2.083vw;
+        margin-bottom:1.52777vw;
+    }
+    .fs-intro .fs-des {
+        font-size:1.1vw;
+        margin-bottom:2.36vw;
+        color:#20241d;
+    }
+    .fs-readmore {
+        font-size:1.2vw;
+    }
+    .fs-readmore:after {
+        margin-top:7px;
+        height:2px;
+        background-color:#575757;
+    }
+    .fs-agencies .fs-inr {
+        width:60.42vw;
+        margin:0 auto;
+        padding:3.125vw 0;
+    }
+    .fs-agencies ul {
+        left:0;
+    }
+    .fs-agency-items {
+        left:0;
+    }
+    .fs-agency-items ul li {
+        width:21.8%;
+        margin:.85vw 1.6%;
+    }
+    .fs-agency-items ul li img {
+        max-width:100%;
+    }
+    .fs-agencies .fs-title {
+        margin-bottom:1.53vw;
+    }
+    .fs-agencies .fs-title h2 {
+        font-size:3vw;
+    }
+
+    .fs-tv .fs-inr{
+        width:81.25vw;
+        margin:0 auto;
+    }
+    .tv-items{
+        position:relative;
+        display:block;
+        width:100%;
+        height:auto;
+    }
+    .tv-item{
+        position:relative;
+        display:block;
+        width:100%;
+        height:auto;
+        background-color:#fff;
+    }
+    .qled-8k2020-box{
+        display:flex;
+    }
+    .tv-pics{
+        max-width:61%;
+        flex:0 0 61%;
+    }
+    .tv-sizes{
+        max-width:39%;
+        flex:0 0 39%;
+    }
+
+    .tab-size-content{
+        padding:1.38vw 0.972vw 2.7vw 0.972vw;
+        background-color:#f2f2f2;
+    }
+    .tab-size-nav{
+        text-align:center;
+        font-size:0;
+        margin-bottom:2.08333vw;
+    }
+    .tab-size-nav span{
+        display:inline-block;
+        border:1px solid #171819;
+        font-size:1.53vw;
+        padding:.76vw 2.08vw;
+        color:#111;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+    }
+    .tab-size-nav span:first-child{
+        border-radius:10px 0 0 10px;
+        -webkit-border-radius:10px 0 0 10px;
+    }
+    .tab-size-nav span:last-child{
+        border-radius:0 10px 10px 0;
+        -webkit-border-radius:0 10px 10px 0;
+        border-left:none;
+    }
+    .tab-size-nav span.active, .tab-size-nav span:not(.active):hover{
+        background-color:#1428a0;
+        border-color:#1428a0;
+        color:#fff;
+    }
+    .tab-size h3{
+        font-size:1.5vw;
+        font-weight:700;
+        color:#000;
+        margin-bottom:2.083vw;
+    }
+    .model-number{
+        color:#797979;
+        font-size:1.1vw;
+        font-weight:700;
+        margin-bottom:1vw;
+    }
+    
+    .tab-size .fs-txt li {
+        position: relative;
+        font-size:1.1vw;
+        color:#000;
+        font-weight:400;
+        margin-bottom:1vw;
+        padding:0 0 0 1vw;
+    }
+    .tv-main .swiper-pagination{
+        display: none;
+    }
+    .tab-size .fs-txt li::before{
+        content: '';
+        position: absolute;
+        left:0;
+        top:0.3vw;
+        display: block;
+        width: 5px;
+        height:5px;
+        background-color:#000;
+        -webkit-border-radius:50%;
+        border-radius:50%;
+    }
+    .size {
+        margin-bottom:2.083vw;
+    }
+    .size ul{
+        display: block;
+        width:100%;
+        height:auto;
+        text-align:center;
+    }
+    .size span{
+        display: block;
+        font-family: "SamsungOne", arial;
+        text-align: center;
+        color:#000;
+        font-size:1.1vw;
+        text-transform: uppercase;
+        font-weight:700;
+        margin-bottom:0.7vw;
+    }
+    .size ul li {
+        display:inline-block;
+        font-size:0.972vw;
+        padding:.5vw .9vw;
+        border-radius:3px;
+        margin:0 0.625vw;
+        border:1px solid #000;
+        -moz-border-radius:3px;
+        -webkit-border-radius:3px;
+        color:#000;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+    }
+    .size ul li.active, .size ul li:not(.active):hover{
+        background-color: #1428a0;
+        color:#fff;
+        border:1px solid #1428a0;
+    }
+    .tab-size-content .fs-buts{
+        text-align:center;
+    }
+    .tab-size-content .fs-but{
+        border:.14vw solid #171717;
+        -webkit-border-radius:50px;
+        border-radius:50px;
+    }
+    .tab-size-content .fs-but::before, .tab-size-content .fs-but::after{
+        display: none;
+    }
+    .tab-size-content .fs-but span::before, .tab-size-content .fs-but span::after{
+        display: none;
+    }
+
+    .tv-thumb{
+        position: relative;
+        display: block;
+        float: left;
+        width: 14%;
+    }
+    .tv-thumb li{
+        display: block;
+        width:6.8vw;
+        height:6.8vw;
+        line-height:6.8vw;
+        border:1px solid #b7b7b7;
+        -webkit-border-radius:10px;
+        border-radius:10px;
+        margin-bottom:0.625vw;
+        text-align: center;
+        cursor: pointer;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+    }
+    .tv-thumb li.active{
+        border:1px solid #111111;
+    }
+    .tv-thumb li img:not(.active){
+        display: none;
+    }
+    .tv-thumb li .fs-pic{
+        display:inline-block;
+        vertical-align: middle;
+        width: auto;
+        height:auto;
+    }
+    .tv-thumb li img.active{
+        width: auto;
+        height: auto;
+        max-width: 80%;
+        max-height:80%;
+    }
+
+    .tv-main{
+        position: relative;
+        display: block;
+        float: left;
+        width: 86%;
+    }
+    .tv-main-slider{
+        width:100%;
+    }
+    .tv-main-slider .swiper-slide{
+        background-color:#fff;
+    }
+    .tv-main .fs-pic img:not(.active){
+        position: absolute;
+        left:0;
+        top:0;
+        opacity:0;
+    }
+
+    .tab-size, .by-tabsize{
+        display: none;
+    }
+    .tab-size.active, .by-tabsize.active{
+        display: block;
+    }
+
+    .qled-2020-box,  .tv-main-2020{
+        position: relative;
+        display: block;
+        width:100%;
+        height:auto;
+    }
+    .tv-main-2020-slider{
+        width:100%;
+    }
+    .qled-2020-size .tv-sizes{
+        display: block;
+        width: 100%;
+        flex: none;
+        max-width: unset;
+    }
+    .qled-2020-size .tab-size{
+        display: block;
+        background-color:#f2f2f2;
+        padding:8.38vw 0.972vw 2.7vw 0.972vw;
+        margin-top:-9vw;
+    }
+    .qled-2020-size .size ul li{
+        margin:0 0.2vw;
+    }
+    .tv-main-2020 .swiper-slide{
+        padding:0 5px;
+        background-color: transparent;
+    }
+    .tv-main-2020 .tab-size h3{
+        font-size:1.3vw;
+    }
+
+    .tv-item:not(.active){
+        position: absolute;
+        left:0;
+        top:0;
+        visibility: hidden;
+    }
+    .fs-tv .fs-title h2{
+        font-size:2.083333vw;
+        color:#000;
+        text-transform: uppercase;
+        text-align: center;
+        margin-bottom:1.04vw;
+    }
+    .tabs {
+        width:100%;
+        text-align: center;
+        margin-bottom: 4.67vw;
+    }
+    .tabs span {
+        font-size: 1.1vw;
+        border-left: 1px solid #000;
+        padding:0 0.8vw;
+        color:#111111;
+        cursor: pointer;
+    }
+    .tabs span:first-child{
+        border:none;
+    }
+    .tabs span.active{
+        font-weight:700;
+    }
+    .fs-tv .swiper-button-prev{
+        left:-40px;
+    }
+    .fs-tv .swiper-button-next{
+        right:-40px;
+    }
+    .tab-size .fs-txt ul{
+        min-height:10vw;
+    }
+
+    .fs-promotions{
+        position: relative;
+        display: block;
+        width:100%;
+        height: auto;
+    }
+    .fs-promotions .fs-box{
+        width:54%;
+        margin:0 auto;
+    }
+    .fs-promotions .fs-title {
+        text-transform:uppercase;
+        text-align:center;
+        margin:2vw 0 2.7vw 0;
+        color: #111;
+    }
+    .fs-promotions .fs-title h2 {
+        line-height:1.4;
+        font-size:2.083vw;
+    }
+    .fs-promotions .fs-title p {
+        font-size:1.25vw;
+        text-transform:none;
+        line-height:1;
+    }
+
+    .promotion-slider{
+        width:100%;
+    }
+    .fs-promotions .fs-box img {
+        width:100%;
+    }
+    .fs-promotions .fs-buts{
+        text-align: center;
+        margin-bottom:1.5vw;
+    }
+    .fs-promotions .fs-box .fs-pic{
+        margin-bottom: 1.5vw;
+    }
+    .fs-promotions .fs-txt h3{
+        font-size: 2.083vw;
+        color: #111;
+        text-align: center;
+        margin-bottom:2vw;
+        font-weight:700;
+    }
+    .fs-promotions .swiper-button-prev, .fs-promotions .swiper-button-next{
+        top:33%;
+    }
+    .fs-promotions .swiper-button-prev{
+        left:0;
+    }
+    .fs-promotions .swiper-button-next{
+        right:0;
+    }
+    .fs-promotions .swiper-pagination-bullet{
+        background-color:#595959;
+    }
+    .fs-promotions .swiper-pagination{
+        position:relative;
+        text-align:center;
+        padding:1.2vw 0;
+    }
+    .fs-promotions .swiper-pagination-bullet-active{
+        background-color:#000;
+    }
+
+}
